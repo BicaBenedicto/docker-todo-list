@@ -14,7 +14,6 @@ services:
       - todobackend
   todotests:
     image: ./todo-app/tests
-    restart: always
     depends_on:
       - todobackend
       - todofrontend
