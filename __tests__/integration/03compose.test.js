@@ -35,7 +35,6 @@ describe(requirements[11].description, () => {
     expect(result).not.toContain('Error');
 
     expect(result).toContain('Successfully tagged todotests:latest');
-
     const { stdout: containerCounter } = await readCommand(false, 'docker ps -q | wc -l', false);
     expect(containerCounter).toStrictEqual('0');
 
@@ -47,7 +46,6 @@ describe(requirements[11].description, () => {
 
     expect(result).not.toBeNull();
     expect(result).not.toContain('Error');
-
     const { stdout: containerNames } = await readCommand(false, 'docker ps --format "{{.Names}}"', false);
     expect(containerNames).toContain(evalId);
     expect(containerNames).toContain('back_1');
@@ -66,7 +64,6 @@ describe(requirements[11].description, () => {
           clearInterval(logCommand);
           res(pass);
         }
-
         const { stderr: testOutput } = await readCommand(false, 'docker logs $(docker ps -aqf name=todotests_1)');
 
         if (testOutput.includes('7 passed, 7 total')) {
